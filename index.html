@@ -154,10 +154,10 @@
   <script type="module">
     // CONFIGURACIÓN: completar con los datos públicos del proyecto Supabase.
     // La clave anon/publishable se expone en el navegador: protegé la tabla con RLS (ver SQL adjunto).
-    const SUPABASE_URL = "PEGAR_URL_DEL_PROYECTO_SUPABASE";
-    const SUPABASE_ANON_KEY = "PEGAR_CLAVE_PUBLICA_ANON";
+    const SUPABASE_URL = "https://zlxzidhsgxqifuogfren.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_xCx5iSdGKTHcWMHys9Oalw_Qpd5OooH";
     import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
     const form = document.getElementById("quoteForm");
     const status = document.getElementById("status");
     const button = document.getElementById("submitBtn");
@@ -174,7 +174,7 @@
         status.textContent = "Completá las opciones obligatorias marcadas con * (podés seleccionar varias).";
         return;
       }
-      if (SUPABASE_URL.startsWith("PEGAR_") || SUPABASE_ANON_KEY.startsWith("PEGAR_")) {
+      if (SUPABASE_URL.startsWith("PEGAR_") || SUPABASE_PUBLISHABLE_KEY.startsWith("PEGAR_")) {
         status.className = "status error";
         status.textContent = "El formulario todavía necesita conectarse a la base de datos antes de recibir respuestas.";
         return;
