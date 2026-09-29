@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153c32">
+  <title>Cuestionario para presupuesto web</title>
+  <style>
+    :root{--green:#153c32;--mint:#dcebe2;--ink:#1e2925;--muted:#66736d;--line:#dce4df;--bg:#f4f7f5;--white:#fff;--accent:#4e806a;--error:#a32929}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+    .wrap{max-width:780px;margin:38px auto;padding:0 18px 48px}.hero{background:var(--green);color:white;border-radius:18px;padding:30px 32px;margin-bottom:20px}.eyebrow{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:#b9d5c5;font-weight:700}.hero h1{font-size:clamp(1.65rem,5vw,2.25rem);line-height:1.15;margin:9px 0}.hero p{margin:10px 0 0;color:#e2eee7}
+    form{display:grid;gap:15px}.card{background:var(--white);border:1px solid var(--line);border-radius:15px;padding:22px}.card h2{font-size:1.08rem;margin:0 0 4px}.hint{color:var(--muted);font-size:.91rem;margin:0 0 14px}.options{display:grid;gap:9px}.option{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer}.option:hover{border-color:var(--accent);background:#f8fbf9}.option input{accent-color:var(--green);margin-top:4px;flex:none}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}label.title{font-weight:650}.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font:inherit;color:var(--ink);background:white}.field textarea{min-height:86px;resize:vertical}.note{background:#f1f6f2;border-left:3px solid var(--accent);padding:11px 13px;border-radius:5px;color:#45564d;font-size:.9rem;margin-top:14px}.actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.submit{border:0;background:var(--green);color:#fff;border-radius:10px;padding:13px 20px;font:inherit;font-weight:700;cursor:pointer}.submit:disabled{opacity:.6;cursor:wait}.status{font-size:.94rem;color:var(--muted)}.status.success{color:#17623c}.status.error{color:var(--error)}.required{color:#a32929}.foot{font-size:.82rem;color:var(--muted);text-align:center;margin-top:16px}
+    @media(max-width:560px){.wrap{margin:18px auto}.hero{padding:24px 22px}.card{padding:18px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Cuestionario inicial</div>
+      <h1>Diseñemos la nueva web de la empresa</h1>
+      <p>La idea es desarrollar un sitio web desde cero para presentar sus servicios y facilitar el contacto. Estas preguntas ayudan a definir el alcance y cotizarlo correctamente.</p>
+    </header>
+
+    <form id="quoteForm">
+      <section class="card">
+        <h2>1. Datos de contacto</h2><p class="hint">Los datos se usarán para responder esta consulta.</p>
+        <div class="fields">
+          <div class="field"><label class="title" for="contact_name">Tu nombre <span class="required">*</span></label><input id="contact_name" name="contact_name" autocomplete="name" required></div>
+          <div class="field"><label class="title" for="company_name">Nombre de la empresa <span class="required">*</span></label><input id="company_name" name="company_name" required></div>
+          <div class="field"><label class="title" for="whatsapp">WhatsApp o teléfono</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="Ej.: 11 1234-5678"></div>
+          <div class="field"><label class="title" for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2. ¿Qué servicios quieren mostrar? <span class="required">*</span></h2><p class="hint">Pueden elegir varias opciones.</p>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="services" value="Mantenimiento de jardines y espacios verdes"><span>Mantenimiento de jardines y espacios verdes</span></label>
+          <label class="option"><input type="checkbox" name="services" value="Corte de césped"><span>Corte de césped</span></label>
+          <label class="option"><input type="checkbox" name="services" value="Poda"><span>Poda</span></label>
+          <label class="option"><input type="checkbox" name="services" value="Diseño y parquización"><span>Diseño y parquización</span></label>
+          <label class="option"><input type="checkbox" name="services" value="Sistemas de riego"><span>Sistemas de riego</span></label>
+          <label class="option"><input type="checkbox" name="services" value="Limpieza de terrenos"><span>Limpieza de terrenos</span></label>
+          <label class="option"><input type="checkbox" name="services" value="Otro"><span>Otro (detallar abajo)</span></label>
+        </div>
+        <div class="field" style="margin-top:12px"><label class="title" for="other_services">Otros servicios o aclaraciones</label><input id="other_services" name="other_services"></div>
+      </section>
+
+      <section class="card">
+        <h2>3. ¿En qué zonas trabajan? <span class="required">*</span></h2><p class="hint">Pueden indicar barrios, localidades o partidos.</p>
+        <div class="field"><textarea id="service_area" name="service_area" required placeholder="Ej.: Zona Norte, Pilar, Escobar..."></textarea></div>
+      </section>
+
+      <section class="card">
+        <h2>4. ¿A qué tipo de clientes atienden? <span class="required">*</span></h2><p class="hint">Pueden elegir más de uno.</p>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="customers" value="Casas particulares"><span>Casas particulares</span></label>
+          <label class="option"><input type="checkbox" name="customers" value="Empresas"><span>Empresas</span></label>
+          <label class="option"><input type="checkbox" name="customers" value="Consorcios"><span>Consorcios</span></label>
+          <label class="option"><input type="checkbox" name="customers" value="Barrios privados"><span>Barrios privados</span></label>
+          <label class="option"><input type="checkbox" name="customers" value="Instituciones"><span>Instituciones</span></label>
+          <label class="option"><input type="checkbox" name="customers" value="Otros"><span>Otros</span></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>5. ¿Qué secciones les gustaría incluir? <span class="required">*</span></h2><p class="hint">Pueden elegir varias. Si no están seguros, marquen “Necesitamos recomendación”.</p>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="sections" value="Inicio y presentación"><span>Inicio y presentación de la empresa</span></label>
+          <label class="option"><input type="checkbox" name="sections" value="Servicios"><span>Detalle de servicios</span></label>
+          <label class="option"><input type="checkbox" name="sections" value="Nosotros y trayectoria"><span>Nosotros y trayectoria</span></label>
+          <label class="option"><input type="checkbox" name="sections" value="Galería de trabajos"><span>Fotos de trabajos realizados</span></label>
+          <label class="option"><input type="checkbox" name="sections" value="Opiniones de clientes"><span>Opiniones de clientes</span></label>
+          <label class="option"><input type="checkbox" name="sections" value="Contacto y WhatsApp"><span>Contacto y acceso directo a WhatsApp</span></label>
+          <label class="option"><input type="checkbox" name="sections" value="Recomendación"><span>Necesitamos recomendación</span></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>6. ¿Qué formato prefieren para el sitio? <span class="required">*</span></h2>
+        <div class="options">
+          <label class="option"><input type="radio" name="site_format" value="Una página con secciones" required><span>Una página con distintas secciones</span></label>
+          <label class="option"><input type="radio" name="site_format" value="Varias páginas" required><span>Varias páginas (por ejemplo: Inicio, Servicios, Nosotros y Contacto)</span></label>
+          <label class="option"><input type="radio" name="site_format" value="Necesitamos recomendación" required><span>No estamos seguros; queremos una recomendación</span></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>7. Como opción adicional, ¿les serviría una plataforma de gestión?</h2><p class="hint">La web institucional es el proyecto principal. Esta pregunta es para saber si también quieren cotizar un sistema privado para organizar clientes y trabajos.</p>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="management_tools" value="Base de clientes y registro de consultas"><span>Base de clientes y registro de consultas</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Historial de trabajos por cliente"><span>Historial de trabajos realizados por cliente</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Solicitudes de presupuesto desde la web"><span>Recepción y seguimiento de solicitudes de presupuesto</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Agenda de visitas y servicios"><span>Agenda de visitas, turnos y servicios</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Planificación de tareas y personal"><span>Planificación de tareas y asignación de personal</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Seguimiento del estado de los trabajos"><span>Seguimiento del estado de cada trabajo</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Recordatorios de mantenimiento"><span>Recordatorios para mantenimientos periódicos</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Acceso privado para clientes"><span>Acceso privado para que los clientes consulten sus servicios</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Presupuestos, facturas o pagos"><span>Presupuestos, facturas o pagos online</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Avisos por email o WhatsApp"><span>Avisos por correo o WhatsApp</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Solo necesitamos la web"><span>Por ahora solo necesitamos la página web</span></label>
+          <label class="option"><input type="checkbox" name="management_tools" value="Queremos que nos recomienden"><span>No estamos seguros; queremos que nos recomienden</span></label>
+        </div>
+        <div class="field" style="margin-top:12px"><label class="title" for="management_notes">¿Qué les gustaría poder organizar o resolver?</label><textarea id="management_notes" name="management_notes" placeholder="Por ejemplo: registrar clientes, coordinar las visitas y saber qué trabajos están pendientes."></textarea></div>
+      </section>
+
+      <section class="card">
+        <h2>8. ¿Qué materiales tienen disponibles? <span class="required">*</span></h2><p class="hint">Pueden elegir varias.</p>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="materials" value="Logo e identidad visual"><span>Logo y colores de la empresa</span></label>
+          <label class="option"><input type="checkbox" name="materials" value="Fotos"><span>Fotos de trabajos realizados</span></label>
+          <label class="option"><input type="checkbox" name="materials" value="Textos"><span>Textos e información institucional</span></label>
+          <label class="option"><input type="checkbox" name="materials" value="Material parcial"><span>Tenemos parte del material</span></label>
+          <label class="option"><input type="checkbox" name="materials" value="Necesitamos ayuda"><span>Necesitamos ayuda para preparar textos o imágenes</span></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>9. ¿Qué esperan de Google? <span class="required">*</span></h2>
+        <div class="options">
+          <label class="option"><input type="radio" name="google_goal" value="Que Google pueda encontrar e indexar la web" required><span>Que Google encuentre e indexe la página</span></label>
+          <label class="option"><input type="radio" name="google_goal" value="Mejorar visibilidad en búsquedas locales" required><span>Mejorar la visibilidad en búsquedas de la zona</span></label>
+          <label class="option"><input type="radio" name="google_goal" value="Anuncios pagos en Google" required><span>Hacer anuncios pagos en Google</span></label>
+          <label class="option"><input type="radio" name="google_goal" value="Quiero que me orienten" required><span>No estamos seguros; queremos orientación</span></label>
+        </div>
+        <div class="note">La preparación básica para Google, el trabajo de posicionamiento y los anuncios pagos son servicios diferentes. Se pueden cotizar por separado.</div>
+      </section>
+
+      <section class="card">
+        <h2>10. Dominio para la nueva web</h2><p class="hint">El dominio es la dirección de la página, por ejemplo: nombreempresa.com.ar.</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="domain_status" value="Ya tenemos dominio"><span>Ya tenemos un dominio registrado</span></label>
+          <label class="option"><input type="radio" name="domain_status" value="Necesitamos registrar uno"><span>Todavía no tenemos; necesitamos registrar uno</span></label>
+          <label class="option"><input type="radio" name="domain_status" value="No sabemos"><span>No sabemos / queremos asesoramiento</span></label>
+        </div>
+        <div class="field" style="margin-top:12px"><label class="title" for="domain_name">Si ya tienen dominio, ¿cuál es?</label><input id="domain_name" name="domain_name" placeholder="www.empresa.com.ar"></div>
+      </section>
+
+      <section class="card">
+        <h2>11. Plazo y presupuesto</h2>
+        <div class="fields">
+          <div class="field"><label class="title" for="target_date">¿Para cuándo les gustaría tenerla?</label><input id="target_date" name="target_date" placeholder="Ej.: durante octubre"></div>
+          <div class="field"><label class="title" for="budget_range">¿Tienen un presupuesto estimado?</label>
+            <select id="budget_range" name="budget_range"><option value="">Prefiero no indicarlo</option><option>Menos de $300.000</option><option>$300.000 a $600.000</option><option>$600.000 a $1.000.000</option><option>Más de $1.000.000</option><option>Necesitamos orientación</option></select>
+          </div>
+          <div class="field full"><label class="title" for="extra_notes">¿Hay algo más que deberíamos saber?</label><textarea id="extra_notes" name="extra_notes" placeholder="Ideas, ejemplos de otras páginas que les gusten, necesidades particulares..."></textarea></div>
+        </div>
+      </section>
+
+      <div class="actions"><button class="submit" id="submitBtn" type="submit">Enviar respuestas</button><span class="status" id="status" role="status" aria-live="polite"></span></div>
+      <p class="foot">Al enviar, las respuestas se guardarán para preparar el presupuesto solicitado.</p>
+    </form>
+  </main>
+  <script type="module">
+    // CONFIGURACIÓN: completar con los datos públicos del proyecto Supabase.
+    // La clave anon/publishable se expone en el navegador: protegé la tabla con RLS (ver SQL adjunto).
+    const SUPABASE_URL = "PEGAR_URL_DEL_PROYECTO_SUPABASE";
+    const SUPABASE_ANON_KEY = "PEGAR_CLAVE_PUBLICA_ANON";
+    import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const form = document.getElementById("quoteForm");
+    const status = document.getElementById("status");
+    const button = document.getElementById("submitBtn");
+    const getValue = name => form.elements[name]?.value?.trim() || null;
+    const getChecks = name => [...form.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value);
+    const getRadio = name => form.querySelector(`input[name="${name}"]:checked`)?.value || null;
+
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+      status.className = "status";
+      status.textContent = "";
+      if (!getChecks("services").length || !getChecks("customers").length || !getChecks("sections").length || !getChecks("materials").length) {
+        status.className = "status error";
+        status.textContent = "Completá las opciones obligatorias marcadas con * (podés seleccionar varias).";
+        return;
+      }
+      if (SUPABASE_URL.startsWith("PEGAR_") || SUPABASE_ANON_KEY.startsWith("PEGAR_")) {
+        status.className = "status error";
+        status.textContent = "El formulario todavía necesita conectarse a la base de datos antes de recibir respuestas.";
+        return;
+      }
+      const answers = {
+        contact_name: getValue("contact_name"), company_name: getValue("company_name"),
+        whatsapp: getValue("whatsapp"), email: getValue("email"), services: getChecks("services"),
+        other_services: getValue("other_services"), service_area: getValue("service_area"),
+        customers: getChecks("customers"), sections: getChecks("sections"),
+        site_format: getRadio("site_format"), materials: getChecks("materials"), management_tools: getChecks("management_tools"),
+        management_notes: getValue("management_notes"), google_goal: getRadio("google_goal"), domain_status: getRadio("domain_status"),
+        domain_name: getValue("domain_name"), target_date: getValue("target_date"),
+        budget_range: getValue("budget_range"), extra_notes: getValue("extra_notes")
+      };
+      button.disabled = true; button.textContent = "Enviando…";
+      const { error } = await supabase.from("consultas_presupuesto_web").insert({ answers });
+      button.disabled = false; button.textContent = "Enviar respuestas";
+      if (error) {
+        console.error(error);
+        status.className = "status error";
+        status.textContent = "No se pudo guardar. Revisá tu conexión e intentá nuevamente.";
+        return;
+      }
+      form.reset();
+      status.className = "status success";
+      status.textContent = "¡Gracias! Las respuestas se guardaron correctamente. Pronto nos comunicaremos.";
+    });
+  </script>
+</body>
+</html>
