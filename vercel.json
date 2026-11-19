@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "https://infocuswebservice.com/formulario/", "permanent": true },
+    { "source": "/:path+", "destination": "https://infocuswebservice.com/:path+", "permanent": true }
+  ]
+}
